@@ -4,7 +4,7 @@ import org.apache.commons.codec.binary.Base64;
 import java.io.PrintWriter;
 import org.json.simple.JSONObject;
 
-public class ApiSecurityExample {
+public class CRC_Example {
   public static void main(String[] args) {
     try {
      String consumer_secret = "secret";
@@ -17,13 +17,9 @@ public class ApiSecurityExample {
      String hash = Base64.encodeBase64String(sha256_HMAC.doFinal(crc_token.getBytes("UTF-8")));
 
      JSONObject responseToken = new JSONObject();
-responseToken.put("response_token", "sha256=" + hash);
-//response.setContentType("application/json");
-// PrintWriter pw = response.getWriter();
-// pw.write(responseToken.toString());
-// pw.flush();
+     responseToken.put("response_token", "sha256=" + hash);
 
-    System.out.println(responseToken.toString());
+     System.out.println(responseToken.toString());
 
      System.out.println("sha256=" + hash);
     }
